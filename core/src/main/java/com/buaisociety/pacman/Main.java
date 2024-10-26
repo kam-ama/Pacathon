@@ -74,7 +74,7 @@ public class Main extends ApplicationAdapter {
         neatSaver = new NeatSaver(neat, getSaveFolder());
         secondLoop = new GameLoop(1);
 
-        int processors = Runtime.getRuntime().availableProcessors();
+        int processors = Runtime.getRuntime().availableProcessors()/2;
         threadPool = Executors.newFixedThreadPool(processors);
         System.out.println("Using " + processors + " threads");
 
@@ -103,9 +103,9 @@ public class Main extends ApplicationAdapter {
 
     public @NotNull Neat createNeat() {
         // Change this to true/false as needed, if you want to load from file
-        if (false) {
+        if (true) {
             // TODO: Change this to the exact file you want to load
-            File exactFile = new File("saves" + File.separator + "oct26-4" + File.separator + "generation-51.json");
+            File exactFile = new File("saves" + File.separator + "oct26-17" + File.separator + "generation-50.json");
             // load exactFile contents to string
             String json;
             try {
@@ -115,7 +115,7 @@ public class Main extends ApplicationAdapter {
             }
             NeatImpl impl = NeatImpl.fromJson(json);
             // modify this as needed
-            //impl.updateNodeCounts(8, 4);  // Add 4 new inputs
+            impl.updateNodeCounts(13, 4);  // Add 4 new inputs
             //impl.updateClients(200);  // have 200 pacman games at once
             return impl;
         } else {
